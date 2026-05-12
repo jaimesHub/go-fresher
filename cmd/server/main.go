@@ -18,8 +18,15 @@ func main() {
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
 
-	// Define a simple GET endpoint
-	r.GET("/ping", Pong)
+	v1 := r.Group("/v1")
+	{
+		v1.GET("/ping", PongV1) // Define a GET endpoint at /v1/ping that calls the PongV1 handler
+	}
+
+	v2 := r.Group("/v2")
+	{
+		v2.GET("/ping", PongV2) // Define a GET endpoint at /v2/ping that calls the PongV2 handler
+	}
 
 	// Start server on port 8080 (default)
 	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
@@ -32,5 +39,19 @@ func Pong(c *gin.Context) {
 	// Return JSON response
 	c.JSON(http.StatusOK, gin.H{
 		"message": "pong",
+	})
+}
+
+func PongV1(c *gin.Context) {
+	// Return JSON response
+	c.JSON(http.StatusOK, gin.H{
+		"message": "pong v1",
+	})
+}
+
+func PongV2(c *gin.Context) {
+	// Return JSON response
+	c.JSON(http.StatusOK, gin.H{
+		"message": "pong v2",
 	})
 }
