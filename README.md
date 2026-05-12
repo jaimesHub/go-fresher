@@ -19,7 +19,7 @@ go-fresher/
 │   ├── models/            # Data structures/domain models
 │   ├── service/           # Business logic layer
 │   ├── repo/              # Data access layer (DAO)
-│   ├── router/            # HTTP route definitions
+│   ├── routers/            # HTTP route definitions
 │   ├── middlewares/       # HTTP middleware handlers
 │   └── initialize/        # Application initialization
 ├── pkg/                   # Reusable packages (shared across projects)
